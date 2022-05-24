@@ -6,9 +6,9 @@
   
     let _Scrolleo = function(opts) {
       // Defaults
-      this.acceleration = 0.08; //1 is fastest, 0 is slowest, 0.08 is default
-      this.secondsPerScreen = null; //Set this to the length of the video. "1" is 1 second.
-      this.additionalOffset = 0; //Add or subtract pixels to when the video will start. "10" means that the video will start 10px earlier.
+      // this.acceleration = 0.08; //1 is fastest, 0 is slowest, 0.08 is default
+      this.secondsPerScreen = null; //Set this to the length of the video. "1" is 1 second. => Defaults to video duration
+      // this.additionalOffset = 0; //Add or subtract pixels to when the video will start. "10" means that the video will start 10px earlier.
       this.wrapperEl = null;
   
       // Override defaults
@@ -98,7 +98,7 @@
               return location >= 0 ? location : 0;
             },
             getOffsetFromTop = function(distanceToTop) {
-              let offset = distanceToTop - window.innerHeight + self.additionalOffset;
+              let offset = distanceToTop - window.innerHeight;
               return offset >= 0 ? offset : 0;
             },
             getPixelsPerSecond = function() {
@@ -116,7 +116,7 @@
             },
             scrollControl = function() {
               //what to do when scrolling
-              self.scrollPos += (targetScrollPos - self.offsetFromTop - self.scrollPos) * self.acceleration;
+              self.scrollPos += (targetScrollPos - self.offsetFromTop - self.scrollPos);
               self.currentTime = self.scrollPos / self.pixelsPerSecond; //convert scrollPos from pixels to seconds to set self.currentTime
               self.wrapper[0].currentTime = self.currentTime;
               self.wrapper[0].pause();
@@ -153,9 +153,9 @@
   
   // Setup video 1
   let scrolleo1 = new Scrolleo({
-    acceleration: 0.08, // 1 = instant, 0 = never
+    // acceleration: 0.08, // 1 = instant, 0 = never
     secondsPerScreen: 6, // Defaults to video duration
-    additionalOffset: 100, // Positive starts the video later, negative starts earlier. default starts when top of video hits bottom of the screen
+    // additionalOffset: 100, // Positive starts the video later, negative starts earlier. default starts when top of video hits bottom of the screen
     wrapperEl: "#scrolleo-1" // id of the video you want to control
   });
   scrolleo1.init();
