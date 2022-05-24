@@ -4,7 +4,7 @@
 (function(window, document, undefined) {
     "use strict";
   
-    var _Scrolleo = function(opts) {
+    let _Scrolleo = function(opts) {
       // Defaults
       this.acceleration = 0.08; //1 is fastest, 0 is slowest, 0.08 is default
       this.secondsPerScreen = null; //Set this to the length of the video. "1" is 1 second.
@@ -13,17 +13,17 @@
   
       // Override defaults
       if (opts) {
-        for (var opt in opts) {
+        for (let opt in opts) {
           this[opt] = opts[opt];
         }
       }
     };
   
-    var targetScrollPos;
+    let targetScrollPos;
   
     _Scrolleo.prototype = {
       init: function() {
-        var self = this;
+        let self = this;
         this.wrapper = document.querySelectorAll(this.wrapperEl);
   
         // get the location of the top of the page
@@ -49,17 +49,17 @@
           // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
           // requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
           (function() {
-            var lastTime = 0;
-            var vendors = ["ms", "moz", "webkit", "o"];
-            for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+            let lastTime = 0;
+            let vendors = ["ms", "moz", "webkit", "o"];
+            for (let x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
               window.requestAnimationFrame = window[vendors[x] + "RequestAnimationFrame"];
               window.cancelAnimationFrame = window[vendors[x] + "CancelAnimationFrame"] || window[vendors[x] + "CancelRequestAnimationFrame"];
             }
             if (!window.requestAnimationFrame)
               window.requestAnimationFrame = function(callback, element) {
-                var currTime = new Date().getTime();
-                var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-                var id = window.setTimeout(function() {
+                let currTime = new Date().getTime();
+                let timeToCall = Math.max(0, 16 - (currTime - lastTime));
+                let id = window.setTimeout(function() {
                   callback(currTime + timeToCall);
                 }, timeToCall);
                 lastTime = currTime + timeToCall;
@@ -86,9 +86,9 @@
           })();
   
           // Define functions to be used by Scrolleo
-          var getElemDistanceToTop = function(elem) {
+          let getElemDistanceToTop = function(elem) {
               //http://gomakethings.com/get-distances-to-the-top-of-the-document-with-native-javascript/
-              var location = 0;
+              let location = 0;
               if (elem.offsetParent) {
                 do {
                   location += elem.offsetTop;
@@ -98,11 +98,11 @@
               return location >= 0 ? location : 0;
             },
             getOffsetFromTop = function(distanceToTop) {
-              var offset = distanceToTop - window.innerHeight + self.additionalOffset;
+              let offset = distanceToTop - window.innerHeight + self.additionalOffset;
               return offset >= 0 ? offset : 0;
             },
             getPixelsPerSecond = function() {
-              var pixelsPerSecond = (window.innerHeight + self.wrapper[0].clientHeight) / self.secondsPerScreen;
+              let pixelsPerSecond = (window.innerHeight + self.wrapper[0].clientHeight) / self.secondsPerScreen;
               return pixelsPerSecond >= 0 ? pixelsPerSecond : 0;
             },
             scrollHandler = function() {
@@ -123,7 +123,7 @@
             };
   
           // Get an element's distance from the top of the page
-          var elem = self.wrapper[0];
+          let elem = self.wrapper[0];
   
           // Calulate the initial size, distance, and offset of each scrolleo video
           self.distanceToTop = getElemDistanceToTop(elem);
@@ -152,7 +152,7 @@
   })(window, document);
   
   // Setup video 1
-  var scrolleo1 = new Scrolleo({
+  let scrolleo1 = new Scrolleo({
     acceleration: 0.08, // 1 = instant, 0 = never
     secondsPerScreen: 6, // Defaults to video duration
     additionalOffset: 100, // Positive starts the video later, negative starts earlier. default starts when top of video hits bottom of the screen
@@ -161,7 +161,7 @@
   scrolleo1.init();
   
   // Setup Video 2
-  var scrolleo2 = new Scrolleo({
+  let scrolleo2 = new Scrolleo({
     wrapperEl: "#scrolleo-2"
   });
   scrolleo2.init();
