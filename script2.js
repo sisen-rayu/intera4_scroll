@@ -151,17 +151,10 @@
     window.Scrolleo = _Scrolleo;
   })(window, document);
   
-  // Setup video 1
-  let scrolleo1 = new Scrolleo({
-    // acceleration: 0.08, // 1 = instant, 0 = never
-    secondsPerScreen: 6, // Defaults to video duration
-    // additionalOffset: 100, // Positive starts the video later, negative starts earlier. default starts when top of video hits bottom of the screen
-    wrapperEl: "#scrolleo-1" // id of the video you want to control
-  });
-  scrolleo1.init();
   
-  // Setup Video 2
+  // Setup Video 
   let scrolleo2 = new Scrolleo({
-    wrapperEl: "#scrolleo-2"
+    wrapperEl: "#scrolleo-2",
+    secondsPerScreen: 15 // Defaults to video duration
   });
   scrolleo2.init();
