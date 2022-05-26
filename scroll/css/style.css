@@ -1,0 +1,48 @@
+@font-face {
+  font-family: "Gunsan";
+  src: url("/scroll/font/Gunsan.ttf") format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Gunsan";
+}
+
+html, body {
+  height: 100%;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #dbd6d0;
+}
+
+.menu {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.menu_content {
+  position: relative;
+  height: 20%;
+}
+
+.menu_anchor {
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  color: #1e1f1f;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.menu_anchor:hover {
+  opacity: 0.6;
+}
+/*# sourceMappingURL=style.css.map */
