@@ -11,7 +11,6 @@
 }
 
 html, body {
-  height: 100%;
   width: 100vw;
   background-color: #dbd6d0;
 }
@@ -31,14 +30,25 @@ html, body {
   width: 30%;
 }
 
+.menu_list {
+  margin: 20px 0 0 30px;
+}
+
 .menu_content {
   position: relative;
   height: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 50px;
 }
 
 .menu_anchor {
   font-size: 50px;
-  margin: 0 0 0 30px;
   color: #1e1f1f;
   text-decoration: none;
   letter-spacing: 0.08em;
