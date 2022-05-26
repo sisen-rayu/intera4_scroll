@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Gunsan";
   src: url("/scroll/font/Gunsan.ttf") format("truetype");
+  src: url("/scroll/font/Gunsan.otf") format("opentype");
 }
 
 * {
